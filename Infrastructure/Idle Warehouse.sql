@@ -1,0 +1,5 @@
+SHOW WAREHOUSES; 
+ 
+SELECT  "name" FROM TABLE(RESULT_SCAN(LAST_QUERY_ID()))  
+WHERE  
+    "state" = 'STARTED' AND "running" = 0; 
