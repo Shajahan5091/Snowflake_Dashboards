@@ -1,0 +1,7 @@
+SELECT USER_NAME || ' granted the ' || ROLE_NAME || ' role on ' || END_TIME AS Description
+    ,QUERY_TEXT as Statement 
+FROM SNOWFLAKE.ACCOUNT_USAGE.QUERY_HISTORY 
+WHERE EXECUTION_STATUS = 'SUCCESS' 
+    AND QUERY_TYPE = 'GRANT' 
+    AND QUERY_TEXT ILIKE '%grant%accountadmin%to%' 
+ORDER BY END_TIME DESC; 
